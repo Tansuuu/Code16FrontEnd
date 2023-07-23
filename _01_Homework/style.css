@@ -1,0 +1,96 @@
+/* COLORS 
+BG: #3B5D50
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.body {
+  background-color: #eff2f1;
+}
+.main {
+  background-color: #eff2f1;
+}
+.bg-green {
+  background-color: #3b5d50;
+}
+.active-page {
+  border-bottom: 5px solid #f9bf29;
+}
+.buttons {
+  margin-top: 120px;
+}
+.button {
+  width: 150px;
+  height: 50px;
+  border-radius: 30px;
+  border: none;
+}
+.btn-yellow {
+  background-color: #f9bf29;
+}
+.btn-green {
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.29);
+  color: #ffffff;
+}
+.btn-black {
+  background-color: #2f2f2f;
+  color: #fff;
+}
+.choose-card {
+  width: 225px;
+}
+.design-section {
+  position: relative;
+}
+.design-img {
+  position: absolute;
+  right: 30px;
+  top: 0;
+}
+.design-img-2 {
+  position: absolute;
+  bottom: -50px;
+  right: 30px;
+}
+.back-img {
+  width: 98px;
+  height: 98px;
+  border-radius: 10px;
+  background: rgba(53, 115, 110, 0.3);
+}
+.footer-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  border-radius: 10px;
+  height: 16px;
+  background-color: #35736e;
+  color: #fff;
+}
+.social-icon {
+  width: 41px;
+  height: 41px;
+  border-radius: 100%;
+  background-color: #d9d9d9;
+}
+.circle {
+  width: 33px;
+  height: 33px;
+  background-color: rgba(53, 115, 110, 0.2);
+  border-radius: 100%;
+}
+.cards {
+  padding-top: 120px;
+}
+.next-icon {
+  background-color: #385d50;
+  border-radius: 100%;
+  padding: 20px;
+}
+.carousel-height {
+  height: 400px;
+}
