@@ -1,0 +1,132 @@
+{
+    "membership": [
+        {
+            "i": {
+                "p1": "Access to the gym from 8:00 to 14:00",
+                "p2": "The trainer on duty will introduce you to the gym"
+            },
+            "id": "1",
+            "l": "Pass ‘Trial’ ",
+            "s": 0
+        },
+        {
+            "i": {
+                "p1": "Visit without restrictions 24/7",
+                "p2": "Individual training program",
+                "p3": "Access to the VTRAINER application",
+                "p4": "Trainer support"
+            },
+            "id": "2",
+            "l": "Pass ‘Easy Start’ ",
+            "s": 119
+        },
+        {
+            "i": {
+                "p1": "The entrance time to the gym is from 14:00 to 16:00",
+                "p2": "Without suspension of gym membership",
+                "p3": "The trainer on duty will introduce you to the gym"
+            },
+            "id": "3",
+            "l": "Pass ‘Free Time’ ",
+            "s": 49
+        },
+        {
+            "i": {
+                "p1": "Visit without restrictions 24/7",
+                "p2": "The trainer on duty will introduce you to the gym"
+            },
+            "id": "4",
+            "l": "Pass ‘1 Month 24/7’ ",
+            "s": 85
+        },
+        {
+            "i": {
+                "p1": "Training in mini-groups until 14:00",
+                "p2": "Without suspension of gym membership",
+                "p3": "Classes with a trainer in a mini-group 3 times a week",
+                "p4": "Trainer support"
+            },
+            "id": "5",
+            "l": "Pass ‘In Shape (AM)’ ",
+            "s": 165
+        },
+        {
+            "i": {
+                "p1": "Training in mini-groups until 17:00",
+                "p2": "Without suspension of gym membership",
+                "p3": "Classes with a trainer in a mini-group 3 times a week",
+                "p4": "Trainer support"
+            },
+            "id": "6",
+            "l": "Pass ‘In Shape (PM)’ ",
+            "s": 195
+        }
+    ],
+
+    "traniers": [
+        {
+            "id": "7",
+            "imageUrl": "../image/photo1.png",
+            "n": "Victoria Shurpik",
+            "i": "",
+            "t": "",
+            "y": ""
+        },
+        {
+            "id": "1",
+            "imageUrl": "image/photo2.png",
+            "n": "Elizabeth Lavrinenko",
+            "i": "",
+            "t": "",
+            "y": ""
+        },
+        {
+            "id": "8",
+            "imageUrl": "image/photo3.png",
+            "n": "Ivan Gladkikh",
+            "i": "",
+            "t": "",
+            "y": ""
+        },
+        {
+            "id": "9",
+            "imageUrl": "image/photo4.png",
+            "n": "Lyudmila Sabilo",
+            "i": "",
+            "t": "",
+            "y": ""
+        },
+        {
+            "id": "10",
+            "imageUrl": "image/photo5.png",
+            "n": "Evgeny Gurkov",
+            "i": "",
+            "t": "",
+            "y": ""
+        },
+        {
+            "id": "11",
+            "imageUrl": "image/photo6.png",
+            "n": "Anatoly Prytytsky",
+            "i": "",
+            "t": "",
+            "y": ""
+        },
+        {
+            "id": "12",
+            "imageUrl": "image/photo7.png",
+            "n": "Victor Ludkovich",
+            "i": "",
+            "t": "",
+            "y": ""
+        },
+        {
+            "id": "13",
+            "imageUrl": "image/photo8.png",
+            "n": "Maria Masyak",
+            "i": "",
+            "t": "",
+            "y": ""
+        }
+    ]
+}
