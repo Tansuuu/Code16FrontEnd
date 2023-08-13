@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 #dark {
   background-color: #000;
@@ -19,10 +19,10 @@
   background-color: #000;
 }
 #light .membership-card {
-  background-color: #D8D9DA;
+  background-color: #d8d9da;
 }
 #light .trainers-card {
-  background-color: #D8D9DA;
+  background-color: #d8d9da;
 }
 #light .footer-icon {
   background-color: #000;
@@ -113,7 +113,7 @@ nav {
   bottom: 5%;
 }
 .theme-btn {
-  position: fixed; 
+  position: fixed;
   right: 40px;
   bottom: 40px;
   border: none;
@@ -135,5 +135,8 @@ nav {
     position: absolute;
     width: 95%;
     text-align: center;
+  }
+  #light .home-shadow {
+    box-shadow: inset -3px -8px 45px 50px rgb(255, 255, 255);
   }
 }
