@@ -1,0 +1,78 @@
+{
+  "users": [
+    {
+      "email": "tansu_2001@hotmail.com",
+      "password": "$2a$10$ZqNxHL28/qGh.VsPCxvCuOP10wvRv9InO0siDA5jyh8rRDGUkDCh2",
+      "username": "tansu",
+      "number": "5443368209",
+      "confirmPassword": "tansu2001",
+      "id": 1
+    },
+    {
+      "email": "deneme@hotmail.com",
+      "password": "$2a$10$URQKRPNz/kgqrMPjGUWMLuBFVOx7zplwjRdKfgoKBdkhPYXyf8oKC",
+      "username": "deneme",
+      "number": "5376089515",
+      "confirmPassword": "deneme",
+      "id": 2
+    }
+  ],
+  "favorites": [
+    {
+      "i": {
+        "height": 1000,
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BNjYwMGRmNmYtZTMxMy00ZjNkLWFjNGQtMzJkYzNiMThiOWY1XkEyXkFqcGdeQXVyMTk2ODc0MjY@._V1_.jpg",
+        "width": 675
+      },
+      "id": "/imdbpicks",
+      "l": "Mid-Year Best Of",
+      "s": "Discover this year’s fan-favorite movies & TV series so far",
+      "userId": 1
+    },
+    {
+      "i": {
+        "height": 1500,
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BN2IzYzBiOTQtNGZmMi00NDI5LTgxMzMtN2EzZjA1NjhlOGMxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+        "width": 1000
+      },
+      "id": "tt0944947",
+      "l": "Game of Thrones",
+      "q": "TV series",
+      "qid": "tvSeries",
+      "rank": 27,
+      "s": "Emilia Clarke, Peter Dinklage",
+      "y": 2011,
+      "yr": "2011-2019",
+      "userId": 1
+    },
+    {
+      "i": {
+        "height": 755,
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg",
+        "width": 511
+      },
+      "id": "tt0145487",
+      "l": "Spider-Man",
+      "q": "feature",
+      "qid": "movie",
+      "rank": 499,
+      "s": "Tobey Maguire, Kirsten Dunst",
+      "y": 2002,
+      "userId": 2
+    },
+    {
+      "i": {
+        "height": 1240,
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BYWJlNThmNWMtZWE5Zi00YWJiLWJiOTQtZWY1Y2I3ZmNhMDYwXkEyXkFqcGdeQXVyMTk2OTAzNTI@._V1_.jpg",
+        "width": 840
+      },
+      "id": "tt16360004",
+      "l": "Spider-Man: Beyond the Spider-Verse",
+      "q": "feature",
+      "qid": "movie",
+      "rank": 1668,
+      "s": "Shameik Moore, Issa Rae",
+      "userId": 2
+    }
+  ]
+}
