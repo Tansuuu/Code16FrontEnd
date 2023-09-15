@@ -7,85 +7,98 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ApiClient from "../repositories/ApiClient";
+import SearchBar from "../components/SearchBar";
+import Utils from "../utils/Utils";
 
 export default function Detail() {
   const location = useLocation();
-  const { from } = location.state;
-  const [localStorageFavList, setLocalStorageFavList] = useState([]);
+  // const { from } = location.state;
+  // const [localStorageFavList, setLocalStorageFavList] = useState([]);
   const [islocalStorageFavList, setBooleanData] = useState(false);
+  const [movie, setMovie] = useState({ undefined });
+  const [search, setSearch] = useState();
+  const [response, setResponse] = useState();
 
-  const prepatePage = () => {
-    var result = JSON.parse(localStorage.getItem("favourites"));
+  useEffect(() => {
+    fromControl();
+    // prepatePage();
+  }, [movie, search, setBooleanData]);
+
+  const fromControl = async () => {
+    if (location.state == null) {
+      if (!movie.hasOwnProperty("id")) {
+        const movieId = location.pathname.split("/")[2];
+        const repsonseMovie = await ApiClient.getSingleMovieById(
+          movieId,
+          setMovie
+        );
+        setMovie(repsonseMovie);
+      }
+    } else {
+      setMovie(location.state.from.item);
+    }
+    await prepatePage();
+  };
+  console.log(movie);
+
+  const prepatePage = async () => {
+    setBooleanData(false);
+    const result = await ApiClient.getFavorites(
+      JSON.parse(localStorage.getItem("user")).id
+    );
+    // console.log(result);
     if (result != null) {
-      setLocalStorageFavList(JSON.parse(localStorage.getItem("favourites")));
-      console.log(result);
+      // setLocalStorageFavList(JSON.parse(localStorage.getItem("favorites")));
+
       for (let index = 0; index < result.length; index++) {
         const item = result[index];
-        if (from.item.id == item.id) {
+        if (movie.id === item.movieId) {
           setBooleanData(true);
         }
       }
     }
   };
 
-  useEffect(() => {
-    prepatePage();
-  }, []);
-
-  const saveToLocalStorage = (item) => {
-    localStorage.setItem("favourites", JSON.stringify(item));
-  };
-
-  async function addToFavorite(item) {
-    try {
-      const response = await fetch("http://localhost:3000/favorites", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...item,
-          userId: JSON.parse(localStorage.getItem("user")).id,
-        }),
-      });
-      return response.json();
-    } catch (error) {
-      return null;
-    }
-  }
-
-  async function deleteFavorite(item) {
-    const response = await fetch(`http://localHost:3000/favorites/${item.id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item),
-    });
-    return response.json();
-    // console.log(response);
-  }
-
   async function handleClick(item) {
     if (islocalStorageFavList) {
       // Unlike
-      console.log("Unlike etçem");
-      const filteredlocalStorageFavLists = localStorageFavList.filter(
-        (item) => {
-          return item.id !== from.item.id;
-        }
-      );
-      console.log(filteredlocalStorageFavLists);
-      saveToLocalStorage(filteredlocalStorageFavLists);
-      await deleteFavorite(item);
-      // islocalStorageFavList = false;
+      console.log("Unlike etcem");
+      // const filteredlocalStorageFavLists = localStorageFavList.filter(
+      //   (item) => {
+      //     return item.id !== movie.id;
+      //   }
+      // );
+      // saveToLocalStorage(filteredlocalStorageFavLists);
+      await ApiClient.deleteFavorite(item);
       setBooleanData(false);
     } else {
       // Like
       // localStorageFavList.push(from.item);
-      console.log("Like etçem");
+      // const resultList = [...localStorageFavList, movie];
+      // // saveToLocalStorage(resultList);
+      // const movieGecici = resultList[resultList.length - 1];
+      // console.log(movieGecici);
+      // if (typeof movieGecici.mov) {
 
-      const resultList = [...localStorageFavList, from.item];
-      saveToLocalStorage(resultList);
-      await addToFavorite(resultList[resultList.length - 1]);
+      // }
+      // return;
+      var newMovie = { ...item, movieId: item.id };
+      delete newMovie.id;
+      // console.log(newMovie);
+      // return;
+      // setMovie(newMovie);
+      // newMovie = resultList[resultList.length - 1];
+      // newMovie.movieId = movie.id;
+      // delete movie.id;
+      await ApiClient.addToFavorite(newMovie);
       setBooleanData(true);
     }
+  }
+
+  async function searchBar(param) {
+    const result = await Utils.searchBar(param);
+    setResponse(result);
   }
 
   function alertClick() {
@@ -108,37 +121,50 @@ export default function Detail() {
 
   return (
     <>
-      <Header />
-      {/* {console.log(`render ${islocalStorageFavList}`)} */}
-      <div className="container my-5 py-5">
-        <div className="row gap-5">
-          <div className="col-sm-4">
-            <img
-              style={{ minHeight: "356px" }}
-              src={
-                from.item.hasOwnProperty("i")
-                  ? from.item.i.imageUrl
-                  : "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
-              }
-              className="w-100 movie-img"
-              alt="movie-img"
-            />
-          </div>
-          <div className="col-sm-7 mt-5">
-            <h2 className="fs-4 mb-5">{from.item.l}</h2>
-            <p>STARS: {from.item.s}</p>
-            <p>YEAR: {from.item.y}</p>
-            <FontAwesomeIcon
-              className="icon mt-5"
-              onClick={() => {
-                handleClick(from.item);
-                alertClick();
-              }}
-              icon={islocalStorageFavList === true ? faHeart : faHeartR}
-            />
+      <Header
+        onChange={(param) => {
+          if (param === "") {
+            setSearch(undefined);
+          } else {
+            setSearch(param);
+            searchBar(param);
+          }
+        }}
+      />
+      {/*  */}
+      {search !== undefined ? (
+        <SearchBar response={response} onMerhaba={() => setSearch(undefined)} />
+      ) : (
+        <div className="container my-5 py-5">
+          <div className="row gap-5">
+            <div className="col-sm-4">
+              <img
+                style={{ minHeight: "356px" }}
+                src={
+                  movie.hasOwnProperty("i")
+                    ? movie.i.imageUrl
+                    : "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
+                }
+                className="w-100 movie-img"
+                alt="movie-img"
+              />
+            </div>
+            <div className="col-sm-7 mt-5">
+              <h2 className="fs-4 mb-5">{movie.l}</h2>
+              <p>STARS: {movie.s}</p>
+              <p>YEAR: {movie.y}</p>
+              <FontAwesomeIcon
+                className="icon mt-5"
+                onClick={() => {
+                  handleClick(movie);
+                  alertClick();
+                }}
+                icon={islocalStorageFavList === true ? faHeart : faHeartR}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Footer />
     </>
   );

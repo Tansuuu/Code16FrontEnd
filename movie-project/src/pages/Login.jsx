@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import ApiClient from "../repositories/ApiClient";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -9,19 +10,9 @@ export default function Login() {
     password: "", // required
   });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.user);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        window.location = "/";
-      });
+    await ApiClient.login(formData);
   }
 
   function handleChange(e) {

@@ -1,16 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import NavItem from "./NavItem";
 
-export default function Header() {
+export default function Header({ onChange }) {
+  const [searchInput, setSearchInput] = useState("");
   const user = localStorage.getItem("user");
-  console.log(user);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+    onChange(e.target.value);
+    // console.log(searchInput);
+  };
 
   return (
     <nav className="navbar navbar-expand-lg header">
-      <div className="container text-white p-0">
-        <NavLink to="/" className="navbar-brand fw-bolder me-5">
+      <div className="container p-0">
+        <NavLink
+          to="/"
+          state={{ from: searchInput }}
+          className="navbar-brand fw-bolder me-5 text-color"
+        >
           ShowHub
         </NavLink>
         <button
@@ -28,20 +40,23 @@ export default function Header() {
           <div className="d-flex gap-5">
             <NavLink
               to="/category/movies"
-              className="text-dark text-decoration-none"
+              className="text-color text-decoration-none"
             >
               Movies
             </NavLink>
             <NavLink
               to="/category/series"
-              className="text-dark text-decoration-none"
+              className="text-color text-decoration-none"
             >
               Series
             </NavLink>
-            <NavLink to="/services" className="text-dark text-decoration-none">
+            <NavLink to="/services" className="text-color text-decoration-none">
               Services
             </NavLink>
-            <NavLink to="/favourite" className="text-dark text-decoration-none">
+            <NavLink
+              to="/favourite"
+              className="text-color text-decoration-none"
+            >
               Favourites
             </NavLink>
           </div>
@@ -51,6 +66,8 @@ export default function Header() {
                 className="header-search py-1 px-3 text-white"
                 type="text"
                 placeholder="Search"
+                value={searchInput}
+                onChange={handleChange}
               />
               <FontAwesomeIcon
                 className="search-icon"
@@ -71,9 +88,35 @@ export default function Header() {
                 </NavLink>
               </>
             ) : (
-              <NavLink className="nav-link border border-dark px-4 rounded">
-                {JSON.parse(user).username}
-              </NavLink>
+              <div className="dropdown">
+                <button
+                  className="header-drop dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {JSON.parse(user).username}
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <NavLink
+                      to="/signin"
+                      className="dropdown-item"
+                      onClick={() => {
+                        localStorage.removeItem("user");
+                        localStorage.removeItem("favorites");
+                      }}
+                    >
+                      Sign Out
+                    </NavLink>
+                  </li>
+                  <li>
+                    <a className="dropdown-item">
+                      <NavItem />
+                    </a>
+                  </li>
+                </ul>
+              </div>
             )}
           </div>
         </div>

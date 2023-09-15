@@ -63,7 +63,7 @@ export default function Footer() {
             <p>IBM -Facebook -Tesla - Appel -Microsoft</p>
             <p>Ofppt - 1337</p>
           </div>
-          <div className="col-sm-4 text-center">
+          <div className="col-sm-4 text-center footer-height">
             <h5>
               <FontAwesomeIcon icon={faCircle} size="2xs" /> company
             </h5>

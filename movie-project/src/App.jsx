@@ -6,10 +6,13 @@ import Services from "./pages/Services";
 import Categories from "./pages/Categories";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { useContext } from "react";
+import { ThemeContext } from "./context/ThemeContext";
 
 const App = () => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <>
+    <div id={theme}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
@@ -19,7 +22,7 @@ const App = () => {
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
       </Routes>
-    </>
+    </div>
   );
 };
 
