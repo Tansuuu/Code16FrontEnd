@@ -8,7 +8,7 @@
 
 ![gif](./img/Homepage.gif)
 
-##### Kullanılan Teknolojiler
+#### Kullanılan Teknolojiler
 
 + HTML
 + CSS
